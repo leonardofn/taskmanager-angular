@@ -1,3 +1,4 @@
+<!-- Tabela de tarefas -->
 <table class="table">
     <thead>
         <th>ID</th>
@@ -9,9 +10,42 @@
             <td>{{ task.id }}</td>
             <td>{{ task.title }}</td>
             <td>
-                <button class="btn btn-info">Detalhes</button>
-                <button class="btn btn-danger">Excluir</button>
+                <div class="btn-group mr-2">
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#taskDetail" (click)="onSelect(task)">
+                        <i class="fa fa-info-circle"></i> Detalhes
+                    </button>
+                </div>
+                <div class="btn-group mr-2">
+                    <button type="button" class="btn btn-danger">
+                        <i class="fa fa-trash-o"></i> Excluir
+                    </button>
+                </div>
             </td>
         </tr>
     </tbody>
 </table>
+
+<!-- Modal -->
+<div class="modal fade" id="taskDetail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Detalhes da Tarefa</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    <strong>ID: </strong> {{ selectedTask.id }}
+                </p>
+                <p>
+                    <strong>Título: </strong> {{ selectedTask.title }}
+                </p>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary">Salvar Alterações</button>
+            </div>
+        </div>
+    </div>
+</div>

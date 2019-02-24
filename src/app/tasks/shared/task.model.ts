@@ -1,10 +1,10 @@
 export class Task {
     /**
-     * id
+     * ID da Tarefa
      */
     public id: number;
     /**
-     * title
+     * Título da Tarefa
      */
     public title: string;
 

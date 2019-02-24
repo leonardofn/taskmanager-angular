@@ -4,10 +4,11 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule} from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { TaskDetailComponent } from './tasks/task-detail/task-detail.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { TasksComponent } from './tasks/tasks.component';
+import { TaskDetailComponent } from './tasks/task-detail/task-detail.component';
+import { TaskService } from './tasks/shared/task-service';
 
 const ROUTES = RouterModule.forRoot ([
   { path: 'dashboard', component: DashboardComponent},
@@ -27,7 +28,7 @@ const ROUTES = RouterModule.forRoot ([
     FormsModule,
     ROUTES
   ],
-  providers: [],
+  providers: [ TaskService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

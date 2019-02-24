@@ -15,7 +15,17 @@ const TASKS: Array<Task> = [
 @Injectable()
 
 export class TaskService{
-    public getTasks(): Array<Task>{
-        return TASKS;
+
+    public getTasks(): Promise<Task[]>{ // public getTasks(): Promise<Task[]>{}
+        // Deve-se especificar o tipo Promise de retorno diretamente: return new Promise((resolve, reject) => {}
+        return new Promise((resolve, reject) => { 
+            if(TASKS.length > 0){
+                resolve(TASKS); // Sucesso
+            }else{
+                let error_msg = "NAO HA TAREFAS";  // let => Variável local
+                reject(error_msg);
+            }
+        })
     }
+    
 }

@@ -1,6 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { RouterModule} from '@angular/router';
+
+const ROUTES = RouterModule.forRoot ([
+  { path: 'tasks', component: TasksComponent }
+]);
+
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -16,7 +22,8 @@ import { TaskDetailComponent } from './tasks/task-detail/task-detail.component';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    ROUTES
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,12 +1,28 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
+import { switchMap } from 'rxjs/operators'; // para versões do rxjs > 5.5
 
 import { Task } from '../shared/task.model';
+import { TaskService } from '../shared/task-service';
 
 @Component({
     selector: 'task-detail',
     templateUrl: './task-detail.component.html'
 })
 
-export class TaskDetailComponent{
+export class TaskDetailComponent implements OnInit{
     @Input() public task: Task;
+
+    public constructor(
+        private taskService: TaskService,
+        private route: ActivatedRoute
+    ){ }
+
+    public ngOnInit(){
+        this.route.params.pipe(
+            switchMap((params: Params) => {
+                return this.taskService.getTask(+params['id'])// "+" => converte uma string (e.g.: "1") em um objeto tipo number (1)
+            }))
+            .subscribe(task => this.task = task)
+    }
 }

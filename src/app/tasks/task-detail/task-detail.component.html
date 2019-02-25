@@ -12,23 +12,3 @@
         </div>
     </div>
 </div>
-
-<!-- Modal -->
-<div class="modal fade" id="taskDetail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" *ngIf="task">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Detalhes da Tarefa: {{ task.title }}</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true"><i class="fa fa-close"></i></span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <input [(ngModel)]="task.title" class="form-control" type="text">
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary">Salvar Alterações</button>
-            </div>
-        </div>
-    </div>
-</div>

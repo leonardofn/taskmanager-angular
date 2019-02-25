@@ -1,3 +1,18 @@
+<!-- Atualizando o template de tarefas -->
+<h1>Detalhes da Tarefa: {{ task.title }}</h1>
+
+<div *ngIf="task">
+    <div class="form-group row">
+        <label for="title" class="col-sm-2 col-form-label"><strong>Título</strong></label>
+        <div class="col-sm-8">
+            <input [(ngModel)]="task.title" type="text" class="form-control" id="title" placeholder="Título">
+        </div>
+        <div class="col-sm-2">
+            <button type="submit" class="btn btn-success">Salvar</button>
+        </div>
+    </div>
+</div>
+
 <!-- Modal -->
 <div class="modal fade" id="taskDetail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" *ngIf="task">
     <div class="modal-dialog" role="document">

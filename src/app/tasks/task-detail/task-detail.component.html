@@ -3,12 +3,15 @@
 
 <div *ngIf="task">
     <div class="form-group row">
-        <label for="title" class="col-sm-2 col-form-label"><strong>Título</strong></label>
+        <label for="title" class="col-sm-1 col-form-label"><strong>Título</strong></label>
         <div class="col-sm-8">
             <input [(ngModel)]="task.title" type="text" class="form-control" id="title" placeholder="Título">
         </div>
-        <div class="col-sm-2">
+        <div class="col-sm-1">
             <button type="submit" class="btn btn-success">Salvar</button>
+        </div>
+        <div class="col-sm-1">
+            <button type="submit" class="btn btn-secondary" (click)="goBack()">Voltar</button>
         </div>
     </div>
 </div>

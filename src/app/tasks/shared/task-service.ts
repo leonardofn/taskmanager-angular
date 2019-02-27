@@ -1,6 +1,8 @@
-import { HttpModule } from '@angular/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Task } from './task.model';
 
 const TASKS: Array<Task> = [
@@ -16,18 +18,13 @@ const TASKS: Array<Task> = [
 @Injectable()
 
 export class TaskService{
-    public constructor(private http: HttpModule){ }
+    public taskUrl = "api/tasks";
 
-    public getTasks(): Promise<Task[]>{ // public getTasks(): Promise<Task[]>{}
-        // Deve-se especificar o tipo Promise de retorno diretamente: return new Promise((resolve, reject) => {}
-        return new Promise((resolve, reject) => { 
-            if(TASKS.length > 0){
-                resolve(TASKS); // Sucesso
-            }else{
-                let error_msg = "NAO HA TAREFAS";  // let => Variável local
-                reject(error_msg);
-            }
-        })
+    public constructor(private http: HttpClient){ }
+
+    public getTasks(): Observable<Task[]>{ // public getTasks(): Promise<Task[]>{}
+        return this.http.get(this.taskUrl).pipe(
+            map((response: Response) => response.json().data as Task[]))
     }
 
     public getImportantTasks(): Promise<Task[]> {

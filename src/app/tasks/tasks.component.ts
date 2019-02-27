@@ -16,8 +16,10 @@ export class TasksComponent implements OnInit {
 
     public ngOnInit(){
         this.taskService.getTasks()
-            .then((tasks) => this.tasks = tasks) // Arrow function
-            .catch((error_msg) => alert(error_msg)); // Arrow function
+            .subscribe(
+                tasks => this.tasks = tasks,
+                error => alert("Ocorreu um error no servidor, tente mais tarde.")
+            )
     }
 
     public onSelect(task: Task): void {

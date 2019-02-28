@@ -24,6 +24,7 @@ export class TaskService{
 
     public getTasks(): Observable<Task[]>{ // public getTasks(): Promise<Task[]>{}
         return this.http.get(this.tasksUrl).pipe(
+            // A propriedade 'data' não existe no tipo 'Promise<any>'.
             map((response: Response) => response.json().data as Task[]));
     }
 
@@ -36,6 +37,7 @@ export class TaskService{
         let url = `${this.tasksUrl}/${id}`;
         console.log(url);
         return this.http.get(url).pipe(
+            // A propriedade 'data' não existe no tipo 'Promise<any>'.
             map((response: Response) => response.json().data as Task));
     }
     

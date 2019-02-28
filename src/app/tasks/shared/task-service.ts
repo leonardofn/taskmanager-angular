@@ -1,8 +1,8 @@
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+
 import { Task } from './task.model';
 
 const TASKS: Array<Task> = [
@@ -18,23 +18,25 @@ const TASKS: Array<Task> = [
 @Injectable()
 
 export class TaskService{
-    public taskUrl = "api/tasks";
+    public tasksUrl = "api/tasks";
 
     public constructor(private http: HttpClient){ }
 
     public getTasks(): Observable<Task[]>{ // public getTasks(): Promise<Task[]>{}
-        return this.http.get(this.taskUrl).pipe(
-            map((response: Response) => response.json().data as Task[]))
+        return this.http.get(this.tasksUrl).pipe(
+            map((response: Response) => response.json().data as Task[]));
     }
 
-    public getImportantTasks(): Promise<Task[]> {
-        return Promise.resolve(TASKS.slice(0, 3));
+    public getImportantTasks(): Observable<Task[]> {
+        return this.getTasks().pipe(
+            map(tasks =>  tasks.slice(0, 3)));
     }
 
     public getTask(id: number): Observable<Task>{
-        let url = '${this.tasksUrl}/${id}';
+        let url = `${this.tasksUrl}/${id}`;
+        console.log(url);
         return this.http.get(url).pipe(
-            map((response: Response) => response.json().data as Task))
+            map((response: Response) => response.json().data as Task));
     }
     
 }

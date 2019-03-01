@@ -22,23 +22,22 @@ export class TaskService{
 
     public constructor(private http: HttpClient){ }
 
-    public getTasks(): Observable<Task[]>{ // public getTasks(): Promise<Task[]>{}
-        return this.http.get(this.tasksUrl).pipe(
-            // A propriedade 'data' não existe no tipo 'Promise<any>'.
-            map((response: Response) => response.json().data as Task[]));
+    // Retorna um array com todas as tarefas existentes na base de dados
+    public getTasks(): Observable<Task[]>{
+        return this.http.get<Task[]>(this.tasksUrl)
     }
 
+    // Retorna algumas tarefas
     public getImportantTasks(): Observable<Task[]> {
         return this.getTasks().pipe(
-            map(tasks =>  tasks.slice(0, 3)));
+            map(tasks =>  tasks.slice(0, 4)));
     }
 
+    // Retorna o endereço de uma tarefa específica
     public getTask(id: number): Observable<Task>{
-        let url = `${this.tasksUrl}/${id}`;
+        const url = `${this.tasksUrl}/${id}`;
         console.log(url);
-        return this.http.get(url).pipe(
-            // A propriedade 'data' não existe no tipo 'Promise<any>'.
-            map((response: Response) => response.json().data as Task));
+        return this.http.get<Task>(url)
     }
-    
+    // Tutorial de apoio sobre HTTPCLIENT: https://angular.io/tutorial/toh-pt6
 }

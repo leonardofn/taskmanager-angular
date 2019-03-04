@@ -4,7 +4,7 @@ import { switchMap } from 'rxjs/operators'; // para versões do rxjs > 5.5
 import { Location } from '@angular/common';
 
 import { Task } from '../shared/task.model';
-import { TaskService } from '../shared/task-service';
+import { TaskService } from '../shared/task.service';
 
 @Component({
     selector: 'task-detail',

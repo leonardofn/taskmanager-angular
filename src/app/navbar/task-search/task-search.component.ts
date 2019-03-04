@@ -7,14 +7,14 @@ import { of } from 'rxjs';
 import {debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 import { Task } from '../../tasks/shared/task.model';
-import { TaskService } from '../../tasks/shared/task-service';
+import { TaskService } from '../../tasks/shared/task.service';
 
 @Component({
     selector: 'task-search',
     templateUrl: './task-search.component.html'
 })
 
-export class TaskSearchComponent{
+export class TaskSearchComponent implements OnInit{
     public searchTerms: Subject<string> = new Subject();
     public tasks: Task[] = [];
 

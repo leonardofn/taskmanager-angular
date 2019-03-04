@@ -29,7 +29,8 @@ export class TaskService{
     public getImportantTasks(): Observable<Task[]> {
         return this.getTasks().pipe(
             catchError(this.handleError),
-            map(tasks =>  tasks.slice(0, 4)));   
+            map(tasks =>  tasks.slice(0, 4))
+            )  
     }
 
     // Retorna o endereço de uma tarefa específica
@@ -40,6 +41,14 @@ export class TaskService{
         )
     }
     // Tutorial de apoio sobre HTTPCLIENT: https://angular.io/tutorial/toh-pt6
+
+    public createTask(task: Task): Observable<Task>{
+        return this.http.post<Task>(this.tasksUrl, task, httpOptions)
+            .pipe(
+                catchError(this.handleError)
+            )
+    }
+
 
     public updateTask(task: Task){
     

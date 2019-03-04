@@ -1,6 +1,17 @@
 <!-- Tabela de tarefas -->
 <h1>Lista de Tarefas</h1>
 
+<div class="card card-body bg-light">
+    <div class="row">
+        <div class="col-md-10">
+            <input type="text" class="form-control" [(ngModel)]="newTask.title" placeholder="Digite aqui uma nova tarefa">
+        </div>
+        <div class="col-md-2">
+            <button class="btn btn-success" (click)="createTask()">Adicionar Tarefa</button>
+        </div>
+    </div>
+</div>
+
 <table class="table">
     <thead>
         <tr>

@@ -19,6 +19,9 @@ export class DashboardComponent implements OnInit{
         //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
         //Add 'implements OnInit' to the class.
         this.taskService.getImportantTasks()
-            .subscribe((tasks) => this.tasks = tasks);
+            .subscribe(
+                (tasks) => this.tasks = tasks,
+                error => alert("Ocorreu um erro no servidor, tente mais tarde.")
+            );
     }
 }

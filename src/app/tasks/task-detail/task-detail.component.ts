@@ -25,10 +25,13 @@ export class TaskDetailComponent implements OnInit{
             switchMap((params: Params) => {
                 return this.taskService.getTask(+params['id'])// "+" => converte uma string (e.g.: "1") em um objeto tipo number (1)
             }))
-            .subscribe(task => this.task = task)
+            .subscribe(
+                task => this.task = task,
+                error => alert("Ocorreu um erro no servidor, tente mais tarde.")
+            );
     }
 
-    public goBack() {
+    public goBack(){
         this.location.back();
     }
 }

@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { switchMap } from 'rxjs/operators'; // para versões do rxjs > 5.5
 import { of } from 'rxjs';
-
+import {debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 import { Task } from '../../tasks/shared/task.model';
 import { TaskService } from '../../tasks/shared/task-service';
@@ -21,7 +21,9 @@ export class TaskSearchComponent{
     public constructor (private taskService: TaskService, private router: Router){ }
 
     public ngOnInit(){
-        this.searchTerms.pipe(
+        this.searchTerms.pipe( // pipe é usado apenas para envolver qualquer operador.
+            debounceTime(300),
+            distinctUntilChanged(),
             switchMap(
                 term => term ? this.taskService.searchByTitle(term) : of<Task[]>([])
             )

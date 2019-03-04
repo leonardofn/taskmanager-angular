@@ -1,9 +1,14 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
 import { Task } from './task.model';
+
+//  header in HTTP
+const httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 
 @Injectable()
 
@@ -35,6 +40,15 @@ export class TaskService{
         )
     }
     // Tutorial de apoio sobre HTTPCLIENT: https://angular.io/tutorial/toh-pt6
+
+    public updateTask(task: Task){
+    
+        return this.http.put(this.tasksUrl, task, httpOptions)
+            .pipe(
+                catchError(this.handleError),
+                map(() => task)
+            )
+    }
 
 /**
      * Handle Http operation that failed.

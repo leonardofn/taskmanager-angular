@@ -1,5 +1,5 @@
 <!-- Atualizando o template de tarefas -->
-<h1 class="page-header">Detalhes da Tarefa: {{ task.title }}</h1>
+<h1 class="page-header">Detalhes da Tarefa: {{ task?.title }}</h1>
 
 <div *ngIf="task">
     <div class="form-group row">
@@ -11,7 +11,7 @@
             <button type="submit" class="btn btn-secondary" (click)="goBack()">Voltar</button>
         </div>
         <div class="col-sm-1">
-            <button type="submit" class="btn btn-success">Salvar</button>
+            <button type="submit" class="btn btn-success" (click)="updateTask()">Atualizar</button>
         </div>
     </div>
 </div>

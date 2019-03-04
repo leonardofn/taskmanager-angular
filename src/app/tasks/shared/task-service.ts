@@ -50,12 +50,22 @@ export class TaskService{
     }
 
 
-    public updateTask(task: Task){
+    public updateTask(task: Task): Observable<Task>{
     
         return this.http.put(this.tasksUrl, task, httpOptions)
             .pipe(
                 catchError(this.handleError),
                 map(() => task)
+            )
+    }
+
+    public deleteTask(id: number): Observable<null>{
+        const url = `${this.tasksUrl}/${id}`;
+
+        return this.http.delete(url, httpOptions)
+            .pipe(
+                catchError(this.handleError),
+                map(() => null)
             )
     }
 

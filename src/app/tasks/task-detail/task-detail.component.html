@@ -1,11 +1,16 @@
 <!-- Atualizando o template de tarefas -->
-<h1 class="page-header">Detalhes da Tarefa: {{ task?.title }}</h1>
-
-<div *ngIf="task">
+<h1 class="pb-2 mt-4 mb-4 border-bottom">Detalhes da Tarefa: {{ task?.title }}</h1>
+<!--
+pb-2 - padding bottom 2 spacer units
+mt-4 - margin top 4 spacer units
+mb-2 - margin bottom 2 spacer units
+border-bottom - border-bottom: 1px solid rgb(222, 226, 230)
+-->
+<form #taskForm="ngForm" *ngIf="task">
     <div class="form-group row">
         <label for="title" class="col-sm-1 col-form-label"><strong>Título</strong></label>
         <div class="col-sm-8">
-            <input [(ngModel)]="task.title" type="text" class="form-control" id="title" placeholder="Título">
+            <input [(ngModel)]="task.title" type="text" class="form-control" id="title" placeholder="Título" name="title" id="title">
         </div>
         <div class="col-sm-1">
             <button type="submit" class="btn btn-secondary" (click)="goBack()">Voltar</button>
@@ -14,4 +19,4 @@
             <button type="submit" class="btn btn-success" (click)="updateTask()">Atualizar</button>
         </div>
     </div>
-</div>
+</form>

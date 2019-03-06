@@ -1,15 +1,9 @@
 export class Task {
-    /**
-     * ID da Tarefa
-     */
-    public id: number;
-    /**
-     * Título da Tarefa
-     */
-    public title: string;
-
-    constructor (id: number, title: string){
-        this.id;
-        this.title;
-    }
+    constructor(
+        public id: number,
+        public title: string,
+        public description?: string,
+        public done?: boolean,
+        public deadline?: string
+    ){ }
 }

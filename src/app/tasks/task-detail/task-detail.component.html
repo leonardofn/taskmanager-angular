@@ -10,24 +10,30 @@ border-bottom - border-bottom: 1px solid rgb(222, 226, 230)
     <div class="row">
         <div class="form-group col-md-6">
             <label for="title" class="col-form-label" [class.text-danger]="showFieldError(title)"><strong>Título</strong></label>
-            <input #title="ngModel" [(ngModel)]="task.title" type="text" class="form-control" [class.is-invalid]="showFieldError(title)" [class.is-valid]="title.valid" name="title" id="title" required minlength="3" maxlength="15" autocomplete="off">
+            <input #title="ngModel" [(ngModel)]="task.title" type="text" class="form-control" [class.is-invalid]="showFieldError(title)" [class.is-valid]="title.valid" name="title" id="title" required minlength="2" maxlength="255" autocomplete="off">
             <div *ngIf="showFieldError(title)" class="invalid-feedback">
                 <div *ngIf="title.errors.required">Por favor, entre com um título para a tarefa.</div>
-                <div *ngIf="title.errors.minlength">O título deve ter no mínimo 3 caracteres.</div>
-                <div *ngIf="title.errors.maxlength">O título deve ter no máximo 15 caracteres.</div>
+                <div *ngIf="title.errors.minlength">O título deve ter no mínimo 2 caracteres.</div>
+                <div *ngIf="title.errors.maxlength">O título deve ter no máximo 255 caracteres.</div>
             </div>
         </div>
 
         <div class="form-group col-md-3">
-            <label for="deadline" class="col-form-label"><strong>Prazo de entrega</strong></label>
-            <input [(ngModel)]="task.deadline" type="text" class="form-control" name="deadline" id="deadline">
+            <label for="deadline" class="col-form-label" [class.text-danger]="showFieldError(deadline)"><strong>Prazo de entrega</strong></label>
+            <input #deadline="ngModel" [(ngModel)]="task.deadline" type="text" class="form-control" [class.is-invalid]="showFieldError(deadline)" [class.is-valid]="deadline.valid" name="deadline" id="deadline" required>
+            <div *ngIf="showFieldError(deadline)" class="invalid-feedback">
+                <div *ngIf="deadline.errors.required">Por favor, entre com um data para o prazo.</div>
+            </div>
         </div>
 
         <div class="form-group col-md-3">
-            <label for="done" class="col-form-label"><strong>Situação</strong></label>
-            <select [(ngModel)]="task.done" class="form-control" name="done" id="done">
+            <label for="done" class="col-form-label" [class.text-danger]="showFieldError(done)"><strong>Situação</strong></label>
+            <select #done="ngModel" [(ngModel)]="task.done" class="custom-select" [class.border-danger]="showFieldError(done)" name="done" id="done" required>
                 <option *ngFor="let option of taskDoneOptions" [value]="option.value">{{ option.text }}</option>            
             </select>
+            <div *ngIf="showFieldError(done)" [class.text-danger]="showFieldError(done)" class="mt-1">
+                <div *ngIf="done.errors.required" style="font-size: 13px;">Por favor, informe a situação da tarefa.</div>
+            </div>
         </div>
     </div>
 

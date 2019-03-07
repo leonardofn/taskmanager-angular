@@ -9,10 +9,12 @@ border-bottom - border-bottom: 1px solid rgb(222, 226, 230)
 <form #taskForm="ngForm" *ngIf="task">
     <div class="row">
         <div class="form-group col-md-6">
-            <label for="title" class="col-form-label" [class.text-danger]="title.invalid && title.touched"><strong>Título</strong></label>
-            <input #title="ngModel" [(ngModel)]="task.title" type="text" class="form-control" [class.is-invalid]="title.invalid && title.touched" [class.is-valid]="title.valid" name="title" id="title" required>
-            <div class="invalid-feedback" *ngIf="title.invalid && title.touched">
-                Por favor, entre com um título para a tarefa.
+            <label for="title" class="col-form-label" [class.text-danger]="showFieldError(title)"><strong>Título</strong></label>
+            <input #title="ngModel" [(ngModel)]="task.title" type="text" class="form-control" [class.is-invalid]="showFieldError(title)" [class.is-valid]="title.valid" name="title" id="title" required minlength="3" maxlength="15" autocomplete="off">
+            <div *ngIf="showFieldError(title)" class="invalid-feedback">
+                <div *ngIf="title.errors.required">Por favor, entre com um título para a tarefa.</div>
+                <div *ngIf="title.errors.minlength">O título deve ter no mínimo 3 caracteres.</div>
+                <div *ngIf="title.errors.maxlength">O título deve ter no máximo 15 caracteres.</div>
             </div>
         </div>
 
@@ -45,4 +47,5 @@ border-bottom - border-bottom: 1px solid rgb(222, 226, 230)
             <button [disabled]="taskForm.invalid" type="submit" class="btn btn-success" (click)="updateTask()">Atualizar</button>
         </div>
     </div>
+    {{ title.errors | json }}
 </form>

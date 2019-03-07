@@ -53,5 +53,7 @@ border-bottom - border-bottom: 1px solid rgb(222, 226, 230)
             <button [disabled]="taskForm.invalid" type="submit" class="btn btn-success" (click)="updateTask()">Atualizar</button>
         </div>
     </div>
-    {{ title.errors | json }}
+    
+    <hr>
+    <pre>{{ title.errors | json }}</pre>
 </form>

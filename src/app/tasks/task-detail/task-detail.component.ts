@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { switchMap } from 'rxjs/operators'; // para versões do rxjs > 5.5
 import { Location } from '@angular/common';
@@ -11,7 +11,7 @@ import { TaskService } from '../shared/task.service';
     templateUrl: './task-detail.component.html'
 })
 
-export class TaskDetailComponent implements OnInit{
+export class TaskDetailComponent implements OnInit, AfterViewInit{
     public task: Task;
 
     public taskDoneOptions: Array<any> = [
@@ -34,6 +34,9 @@ export class TaskDetailComponent implements OnInit{
                 task => this.task = task,
                 error => alert("Ocorreu um erro no servidor, tente mais tarde.")
             );
+    }
+
+    public ngAfterViewInit(){
     }
 
     public goBack(){

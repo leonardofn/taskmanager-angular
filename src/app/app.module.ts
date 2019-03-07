@@ -22,6 +22,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryTaskDataService } from './in-memory-task-data.service';
 
+// jquery plugins
+import * as $ from 'jquery';
+
 @NgModule({
   declarations: [
     AppComponent,

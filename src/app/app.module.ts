@@ -24,6 +24,7 @@ import { InMemoryTaskDataService } from './in-memory-task-data.service';
 
 // jquery plugins
 import * as $ from 'jquery';
+import * as datetimepicker from 'eonasdan-bootstrap-datetimepicker';
 
 @NgModule({
   declarations: [

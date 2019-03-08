@@ -26,6 +26,8 @@ export class TaskDetailComponent implements OnInit, AfterViewInit{
     ){ }
 
     public ngOnInit(){
+        this.task = new Task(null, null);
+
         this.route.params.pipe(
             switchMap((params: Params) => {
                 return this.taskService.getById(+params['id'])// "+" => converte uma string (e.g.: "1") em um objeto tipo number (1)
@@ -37,6 +39,7 @@ export class TaskDetailComponent implements OnInit, AfterViewInit{
     }
 
     public ngAfterViewInit(){
+        //$("#deadline").datetimepicker().on('dp.change', () => this.task.deadline = $("#deadline").val());
     }
 
     public goBack(){

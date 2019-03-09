@@ -2,7 +2,7 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { switchMap } from 'rxjs/operators'; // para versões do rxjs > 5.5
 import { Location } from '@angular/common';
-import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 
 import { Task } from '../shared/task.model';
 import { TaskService } from '../shared/task.service';
@@ -28,9 +28,9 @@ export class TaskDetailComponent implements OnInit, AfterViewInit{
         private formBuilder: FormBuilder
     ){ 
         this.reactiveTaskForm = this.formBuilder.group({
-            title: [null],
-            deadline: [null],
-            done: [null],
+            title: [null, [Validators.required, Validators.minLength(2), Validators.maxLength(255)]],
+            deadline: [null, Validators.required],
+            done: [null, Validators.required],
             description: [null],
         })
     }

@@ -7,7 +7,7 @@ mb-2 - margin bottom 2 spacer units
 border-bottom - border-bottom: 1px solid rgb(222, 226, 230)
 -->
 
-<form [formGroup]="reactiveTaskForm">
+<form [formGroup]="reactiveTaskForm" (ngSubmit)="updateTask()">
     <div class="row">
         <div class="form-group col-md-6">
             <label for="title" class="col-form-label" [class.text-danger]="showFieldError(reactiveTaskForm.get('title'))"><strong>Título</strong></label>
@@ -42,6 +42,14 @@ border-bottom - border-bottom: 1px solid rgb(222, 226, 230)
         </div>
     </div>
 
+    <div class="btn-toolbar" role="toolbar">
+        <div class="btn-group mr-2" role="group">
+            <button [disabled]="reactiveTaskForm.invalid" type="submit" class="btn btn-success">Atualizar</button>
+        </div>
+        <div class="btn-group mr-2" role="group">
+            <button type="button" class="btn btn-secondary" (click)="goBack()">Voltar</button>
+        </div>
+    </div>
 <pre>
     {{ reactiveTaskForm.value | json }}
 </pre>

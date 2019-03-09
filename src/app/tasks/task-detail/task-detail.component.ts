@@ -42,13 +42,30 @@ export class TaskDetailComponent implements OnInit, AfterViewInit{
                 return this.taskService.getById(+params['id'])// "+" => converte uma string (e.g.: "1") em um objeto tipo number (1)
             }))
             .subscribe(
-                task => this.task = task,
+                task => this.setTask(task),
                 error => alert("Ocorreu um erro no servidor, tente mais tarde.")
             );
     }
 
+    public setTask(task: Task): void {
+        this.task = task;
+
+        //setValue
+        // let formModel = {
+        //     title: task.title || null,
+        //     done: task.done || null,
+        //     deadline: task.deadline || null,
+        //     description: task.description || null,
+        // }
+
+        this.reactiveTaskForm.patchValue(task);
+    }
+
     public ngAfterViewInit(){
-        //$("#deadline").datetimepicker().on('dp.change', () => this.task.deadline = $("#deadline").val());
+        // $("#deadline").datetimepicker({
+        //     'sideByside': true,
+        //     'locale': 'pt-br'
+        // }).on('dp.change', () => this.reactiveTaskForm.get('deadline').setValue($("#deadline").val()));
     }
 
     public goBack(){

@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { switchMap } from 'rxjs/operators'; // para versões do rxjs > 5.5
 import { Location } from '@angular/common';
+import { FormGroup, FormControl  } from '@angular/forms';
 
 import { Task } from '../shared/task.model';
 import { TaskService } from '../shared/task.service';
@@ -12,6 +13,7 @@ import { TaskService } from '../shared/task.service';
 })
 
 export class TaskDetailComponent implements OnInit, AfterViewInit{
+    public reactiveTaskForm: FormGroup;
     public task: Task;
 
     public taskDoneOptions: Array<any> = [
@@ -23,7 +25,14 @@ export class TaskDetailComponent implements OnInit, AfterViewInit{
         private taskService: TaskService,
         private route: ActivatedRoute,
         private location: Location
-    ){ }
+    ){ 
+        this.reactiveTaskForm = new FormGroup({
+            title: new FormControl(null),
+            deadline: new FormControl(null),
+            done: new FormControl(null),
+            description: new FormControl(null)
+        })
+    }
 
     public ngOnInit(){
         this.task = new Task(null, null);

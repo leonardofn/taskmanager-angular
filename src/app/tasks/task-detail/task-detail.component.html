@@ -6,7 +6,41 @@ mt-4 - margin top 4 spacer units
 mb-2 - margin bottom 2 spacer units
 border-bottom - border-bottom: 1px solid rgb(222, 226, 230)
 -->
-<form #taskForm="ngForm" (ngSubmit)="goBack()">
+
+<form [formGroup]="reactiveTaskForm">
+    <div class="row">
+        <div class="form-group col-md-6">
+            <label for="title" class="col-form-label"><strong>Título</strong></label>
+            <input type="text" formControlName="title" class="form-control" id="title" autocomplete="off">
+        </div>
+
+        <div class="form-group col-md-3">
+            <label for="deadline" class="col-form-label"><strong>Prazo de entrega</strong></label>
+            <input type="text" formControlName="deadline" class="form-control" id="deadline" autocomplete="off">
+        </div>
+
+        <div class="form-group col-md-3">
+            <label for="done" class="col-form-label"><strong>Situação</strong></label>
+            <select formControlName="done" class="form-control" id="done">
+                <option *ngFor="let option of taskDoneOptions" [value]="option.value">{{ option.text }}</option>            
+            </select>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group col-md-12">
+            <label for="description" class="col-form-label"><strong>Descrição detalhada</strong></label>
+            <textarea formControlName="description" class="form-control" id="description" rows="4"></textarea>
+        </div>
+    </div>
+
+<pre>
+    {{ reactiveTaskForm.value | json }}
+</pre>
+</form>
+
+
+<!-- <form #taskForm="ngForm" (ngSubmit)="goBack()">
     <div class="row">
         <div class="form-group col-md-6">
             <label for="title" class="col-form-label" [class.text-danger]="showFieldError(title)"><strong>Título</strong></label>
@@ -51,8 +85,8 @@ border-bottom - border-bottom: 1px solid rgb(222, 226, 230)
         <div class="btn-group mr-2" role="group">
             <button class="btn btn-secondary">Voltar</button>
         </div>
-    </div>
+    </div> 
     
     <hr>
     <pre>{{ task | json }}</pre>
-</form>
+</form>-->

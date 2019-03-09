@@ -15,7 +15,7 @@ export class SignUpFormComponent{
         this.userForm = this.formBuilder.group({
             name: [null, [Validators.required, Validators.minLength(7), Validators.maxLength(100)]],
             email: [null, [Validators.required, Validators.email]],
-            password: [null,[Validators.required, Validators.minLength(8)]],
+            password: [null, [Validators.required, Validators.minLength(8)]],
             passwordConfirmation: [null, [Validators.required]]
         })
     }

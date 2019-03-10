@@ -1,32 +1,52 @@
 <h1 class="pb-2 mt-4 mb-4 border-bottom">Faça o seu cadastro</h1>
 
 <div class="jumbotron"> 
-    <form class="form-horizontal" [formGroup]="userForm" (ngSubmit)="signUpUser()">
+    <form class="form-horizontal" [formGroup]="form" (ngSubmit)="signUpUser()">
         <div class="form-group row">
-            <label for="name" class="col-sm-4 col-form-label text-right">Nome</label>
+            <label for="name" class="col-sm-4 col-form-label text-right" [class.text-danger]="formUtils.showFieldError('name')"><strong>Nome</strong></label>
             <div class="col-sm-4">
-                <input type="text" class="form-control" id="name"  formControlName="name">
+                <input type="text" formControlName="name" class="form-control" [ngClass]="formUtils.fieldClassForErrorOrSuccess('name')" id="name"  autocomplete="off">
+                
+                <div *ngIf="formUtils.showFieldError('name')" class="invalid-feedback">
+                    <div *ngIf="form.get('name').errors.required">O campo nome é obrigatório.</div>
+                    <div *ngIf="form.get('name').errors.minlength">O nome deve ter no mínimo 5 caracteres.</div>
+                    <div *ngIf="form.get('name').errors.maxlength">O nome deve ter no máximo 100 caracteres.</div>
+                </div>
             </div>
         </div>
 
         <div class="form-group row">
-            <label for="email" class="col-sm-4 col-form-label text-right">Email</label>
+            <label for="email" class="col-sm-4 col-form-label text-right" [class.text-danger]="formUtils.showFieldError('email')"><strong>Email</strong></label>
             <div class="col-sm-4">
-                <input type="email" class="form-control" id="email"  formControlName="email">
+                <input type="email" class="form-control" formControlName="email" [ngClass]="formUtils.fieldClassForErrorOrSuccess('email')" id="email">
+            
+                <div *ngIf="formUtils.showFieldError('email')" class="invalid-feedback">
+                    <div *ngIf="form.get('email').errors.required">O campo email é obrigatório.</div>
+                    <div *ngIf="form.get('email').errors.email">O email digitado é inválido.</div>
+                </div>
             </div>
         </div>
 
         <div class="form-group row">
-            <label for="password" class="col-sm-4 col-form-label text-right">Senha</label>
+            <label for="password" class="col-sm-4 col-form-label text-right" [class.text-danger]="formUtils.showFieldError('password')"><strong>Senha</strong></label>
             <div class="col-sm-4">
-                <input type="password" class="form-control" id="password"  formControlName="password">
+                <input type="password" class="form-control" id="password"  formControlName="password" [ngClass]="formUtils.fieldClassForErrorOrSuccess('password')">
+            
+                <div *ngIf="formUtils.showFieldError('password')" class="invalid-feedback">
+                    <div *ngIf="form.get('password').errors.required">O campo senha é obrigatório.</div>
+                    <div *ngIf="form.get('password').errors.minlength">A senha deve ter no mínimo 8 caracteres.</div>
+                </div>              
             </div>
         </div>
 
         <div class="form-group row">
-            <label for="passwordConfirmation" class="col-sm-4 col-form-label text-right">Confirmação de Senha</label>
+            <label for="passwordConfirmation" class="col-sm-4 col-form-label text-right"class="col-sm-4 col-form-label text-right" [class.text-danger]="formUtils.showFieldError('passwordConfirmation')"><strong>Confirmação de Senha</strong></label>
             <div class="col-sm-4">
-                <input type="password" class="form-control" id="passwordConfirmation"  formControlName="passwordConfirmation">
+                <input type="password" class="form-control" id="passwordConfirmation"  formControlName="passwordConfirmation" [ngClass]="formUtils.fieldClassForErrorOrSuccess('passwordConfirmation')">          
+            
+                <div *ngIf="formUtils.showFieldError('passwordConfirmation')" class="invalid-feedback">
+                    <div *ngIf="form.get('passwordConfirmation').errors.required">O confirmação de senha é obrigatório.</div>
+                </div>              
             </div>
         </div>
 

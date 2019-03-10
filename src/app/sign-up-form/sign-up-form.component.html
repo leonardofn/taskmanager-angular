@@ -53,7 +53,7 @@
 
         <div class="form-group row">
             <div class="col-sm-4 offset-md-4">
-                <button type="submit" class="btn btn-primary">Criar Conta</button>
+                <button [disabled]="form.invalid" type="submit" class="btn btn-primary">Criar Conta</button>
             </div>
         </div>
     </form>

@@ -7,8 +7,12 @@ export class FormUtils {
 
     public fieldClassForErrorOrSuccess(fieldName: string){
         return{
+            // Errors
             "is-invalid": this.showFieldError(fieldName),
-            "is-valid": this.getField(fieldName).valid
+            "text-danger": this.showFieldError(fieldName),
+            // Success
+            "is-valid": this.getField(fieldName).valid,
+            "text-success": this.getField(fieldName).valid
         }
     }
 

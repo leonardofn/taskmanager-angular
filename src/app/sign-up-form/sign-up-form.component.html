@@ -3,7 +3,7 @@
 <div class="jumbotron"> 
     <form class="form-horizontal" [formGroup]="form" (ngSubmit)="signUpUser()">
         <div class="form-group row">
-            <label for="name" class="col-sm-4 col-form-label text-right" [class.text-danger]="formUtils.showFieldError('name')"><strong>Nome</strong></label>
+            <label for="name" class="col-sm-4 col-form-label text-right" [ngClass]="formUtils.fieldClassForErrorOrSuccess('name')"><strong>Nome</strong></label>
             <div class="col-sm-4">
                 <input type="text" formControlName="name" class="form-control" [ngClass]="formUtils.fieldClassForErrorOrSuccess('name')" id="name"  autocomplete="off">
                 
@@ -16,7 +16,7 @@
         </div>
 
         <div class="form-group row">
-            <label for="email" class="col-sm-4 col-form-label text-right" [class.text-danger]="formUtils.showFieldError('email')"><strong>Email</strong></label>
+            <label for="email" class="col-sm-4 col-form-label text-right" [ngClass]="formUtils.fieldClassForErrorOrSuccess('email')"><strong>Email</strong></label>
             <div class="col-sm-4">
                 <input type="email" class="form-control" formControlName="email" [ngClass]="formUtils.fieldClassForErrorOrSuccess('email')" id="email">
             
@@ -28,7 +28,7 @@
         </div>
 
         <div class="form-group row">
-            <label for="password" class="col-sm-4 col-form-label text-right" [class.text-danger]="formUtils.showFieldError('password')"><strong>Senha</strong></label>
+            <label for="password" class="col-sm-4 col-form-label text-right" [ngClass]="formUtils.fieldClassForErrorOrSuccess('password')"><strong>Senha</strong></label>
             <div class="col-sm-4">
                 <input type="password" class="form-control" id="password"  formControlName="password" [ngClass]="formUtils.fieldClassForErrorOrSuccess('password')">
             
@@ -40,12 +40,13 @@
         </div>
 
         <div class="form-group row">
-            <label for="passwordConfirmation" class="col-sm-4 col-form-label text-right"class="col-sm-4 col-form-label text-right" [class.text-danger]="formUtils.showFieldError('passwordConfirmation')"><strong>Confirmação de Senha</strong></label>
+            <label for="passwordConfirmation" class="col-sm-4 col-form-label text-right" [ngClass]="formUtils.fieldClassForErrorOrSuccess('passwordConfirmation')"><strong>Confirmação de Senha</strong></label>
             <div class="col-sm-4">
                 <input type="password" class="form-control" id="passwordConfirmation"  formControlName="passwordConfirmation" [ngClass]="formUtils.fieldClassForErrorOrSuccess('passwordConfirmation')">          
             
                 <div *ngIf="formUtils.showFieldError('passwordConfirmation')" class="invalid-feedback">
                     <div *ngIf="form.get('passwordConfirmation').errors.required">O confirmação de senha é obrigatório.</div>
+                    <div *ngIf="form.get('passwordConfirmation').errors.mismatch">As senhas não coincidem.</div>
                 </div>              
             </div>
         </div>

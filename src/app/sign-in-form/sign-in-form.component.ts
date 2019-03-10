@@ -23,6 +23,6 @@ export class SignInFormComponent{
 
     public SignInUser(){
         console.log("Formulário de SignIn enviado!");
-        console.log("this.form.value");
+        console.log(this.form.value);
     }
 }

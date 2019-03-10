@@ -1,10 +1,9 @@
-import { Component } from '@angular/core';
 import { Injectable } from '@angular/core';
 
 import { Observable, throwError } from 'rxjs';
+import { Angular2TokenService } from 'angular2-token';
 
 import { User } from './user.model';
-import { Angular2TokenService } from 'angular2-token';
 
 @Injectable()
 
@@ -16,7 +15,7 @@ export class AuthService{
         // returns Observable<Response>
     }
 
-    public signIn(uid: string){
+    public signIn(uid: string, password: string){
         // call Angular2-Token SignUp method here!
         // returns Observable<Response>
     }

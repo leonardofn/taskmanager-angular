@@ -27,8 +27,8 @@ import { TaskService } from './tasks/shared/task.service';
 import { AppRoutingModule } from './app-routing.module';
 
 // in memory web api
-import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryTaskDataService } from './in-memory-task-data.service';
+// import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+// import { InMemoryTaskDataService } from './in-memory-task-data.service';
 
 // jquery plugins
 import * as $ from 'jquery';
@@ -50,13 +50,13 @@ import * as datetimepicker from 'eonasdan-bootstrap-datetimepicker';
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    HttpClientModule,
-    InMemoryWebApiModule.forRoot(InMemoryTaskDataService)
+    HttpClientModule
+    //InMemoryWebApiModule.forRoot(InMemoryTaskDataService)
   ],
   providers: [ 
-    TaskService,
+    Angular2TokenService,
     AuthService,
-    Angular2TokenService 
+    TaskService
   ],
   bootstrap: [AppComponent]
 })

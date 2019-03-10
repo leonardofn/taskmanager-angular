@@ -7,6 +7,7 @@ import { NgModule } from '@angular/core';
 
 // angular plugins imports
 import { Angular2TokenService } from 'angular2-token';
+import { AuthService } from './shared/auth.service';
 
 
 // components imports
@@ -54,8 +55,9 @@ import * as datetimepicker from 'eonasdan-bootstrap-datetimepicker';
   ],
   providers: [ 
     TaskService,
+    AuthService,
     Angular2TokenService 
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule{ }

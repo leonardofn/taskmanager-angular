@@ -1,6 +1,6 @@
 import { FormGroup } from '@angular/forms';
 
-export class FormsUtils{
+export class FormUtils {
     public constructor(private form: FormGroup){
 
     }

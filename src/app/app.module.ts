@@ -22,6 +22,9 @@ import { TaskDetailComponent } from './tasks/task-detail/task-detail.component';
 import { TaskService } from './tasks/shared/task.service';
 import { AuthService } from './shared/auth.service';
 
+// guards imports
+import { AuthGuard } from './guards/auth.guard';
+
 // modules imports
 import { AppRoutingModule } from './app-routing.module';
 
@@ -51,12 +54,13 @@ import * as datetimepicker from 'eonasdan-bootstrap-datetimepicker';
     AppRoutingModule,
     HttpClientModule,
     AngularTokenModule.forRoot({
-      apiBase: 'http://api.taskmanager.test:3000'
+      apiBase: 'http://api.taskmanager.test:3000' // endereço da api feita em Rails
     })
     //InMemoryWebApiModule.forRoot(InMemoryTaskDataService)
   ],
   providers: [ 
-    AngularTokenModule,
+    AuthGuard,
+    AngularTokenService,
     AuthService,
     TaskService
   ],

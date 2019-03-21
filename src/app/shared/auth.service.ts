@@ -25,9 +25,11 @@ export class AuthService{
         // returns Observable<Response>
     }
 
-    public inSignedIn(){
+    public userSignedIn(){
         // call Angular-Token userSignedIn method here!
         // returns Boolean
+
+        return this.tokenService.userSignedIn();
     }
 
     private handleError(error) {

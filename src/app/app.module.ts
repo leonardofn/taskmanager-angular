@@ -6,9 +6,7 @@ import { NgModule } from '@angular/core';
 
 
 // angular plugins imports
-import { Angular2TokenService } from 'angular2-token';
-import { AuthService } from './shared/auth.service';
-
+import { AngularTokenService, AngularTokenModule, AngularTokenOptions } from 'angular-token';
 
 // components imports
 import { AppComponent } from './app.component';
@@ -22,6 +20,7 @@ import { TaskDetailComponent } from './tasks/task-detail/task-detail.component';
 
 // service imports
 import { TaskService } from './tasks/shared/task.service';
+import { AuthService } from './shared/auth.service';
 
 // modules imports
 import { AppRoutingModule } from './app-routing.module';
@@ -50,11 +49,14 @@ import * as datetimepicker from 'eonasdan-bootstrap-datetimepicker';
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularTokenModule.forRoot({
+      apiBase: 'http://api.taskmanager.test:3000'
+    })
     //InMemoryWebApiModule.forRoot(InMemoryTaskDataService)
   ],
   providers: [ 
-    Angular2TokenService,
+    AngularTokenModule,
     AuthService,
     TaskService
   ],

@@ -28,10 +28,6 @@ import { AuthGuard } from './guards/auth.guard';
 // modules imports
 import { AppRoutingModule } from './app-routing.module';
 
-// in memory web api
-// import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-// import { InMemoryTaskDataService } from './in-memory-task-data.service';
-
 // jquery plugins
 import * as $ from 'jquery';
 import * as datetimepicker from 'eonasdan-bootstrap-datetimepicker';
@@ -54,13 +50,12 @@ import * as datetimepicker from 'eonasdan-bootstrap-datetimepicker';
     AppRoutingModule,
     HttpClientModule,
     AngularTokenModule.forRoot({
-      apiBase: 'http://api.taskmanager.test:3000' // endereço da api feita em Rails
+      apiBase: 'http://api.task-manager.test:3000', // endereço da api feita em Rails
     })
-    //InMemoryWebApiModule.forRoot(InMemoryTaskDataService)
   ],
   providers: [ 
     AuthGuard,
-    AngularTokenService,
+    AngularTokenModule,
     AuthService,
     TaskService
   ],

@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
 
 import { Observable, throwError } from 'rxjs';
-import { AngularTokenService } from 'angular-token';
+import { catchError } from 'rxjs/operators';
+
+
+import { AngularTokenService, RegisterData } from 'angular-token';
 
 import { User } from './user.model';
 
@@ -10,9 +13,13 @@ import { User } from './user.model';
 export class AuthService{
     public constructor(private tokenService: AngularTokenService){ }
 
-    public signUp(user: User){
+    public signUp(user: User): Observable<Response> {
         // call Angular-Token SignUp method here!
         // returns Observable<Response>
+        return this.tokenService.registerAccount(user as any)
+            .pipe(
+                catchError(this.handleError)
+            )
     }
 
     public signIn(uid: string, password: string){

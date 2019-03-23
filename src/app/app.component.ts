@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-// import { Angular2TokenService } from 'angular2-token';
+import { AngularTokenService } from 'angular-token';
 
 @Component({
   selector: 'app-root',
@@ -16,4 +16,7 @@ export class AppComponent {
   //     apiBase: 'http://api.taskmanager.test:3000'
   //   })
   // }
+
+  public constructor(private tokenService: AngularTokenService){ }
+
 }

@@ -1,6 +1,18 @@
 <h1 class="pb-2 mt-4 mb-4 border-bottom">Faça o seu cadastro</h1>
 
-<div class="jumbotron"> 
+<div class="jumbotron">
+    <div *ngIf="formErrors" class="alert alert-danger">
+        <strong>
+            <i class="fa fa-exclamation-triangle"></i>
+            Ocorreu um erro ao tentar criar a sua conta no sistema.
+        </strong>
+
+        <ul>
+            <!-- Exibe a mensagem de erro no alert -->
+            <li *ngFor="let error of formErrors">{{ error }}</li>
+        </ul>
+    </div>
+
     <!-- Campo de Nome -->
     <form [formGroup]="form" (ngSubmit)="signUpUser()">
         <div class="form-group row">
@@ -58,7 +70,7 @@
 
         <div class="form-group row">
             <div class="col-sm-4 offset-md-4">
-                <button [disabled]="form.invalid" type="submit" class="btn btn-primary">Criar Conta</button>
+                <button [disabled]="form.invalid || submitted" type="submit" class="btn btn-primary">Criar Conta</button>
             </div>
         </div>
     </form>

@@ -10,8 +10,10 @@ export class NotAuthenticatedGuard implements CanActivate {
 
     public canActivate() {
         if (this.authService.userSignedIn()) {
-            this.router.navigate(['//dashboard']);
+            this.router.navigate(['/dashboard']);
             return false;
+        }else {
+            return true;
         }
     }
 }

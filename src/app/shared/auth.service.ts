@@ -27,12 +27,16 @@ export class AuthService{
         // returns Observable<Response>
     }
 
-    public signOut(){
+    public signOut(): Observable<Response> {
         // call Angular-Token SignOuy method here!
         // returns Observable<Response>
+        return this.tokenService.signOut()
+            .pipe(
+                catchError(this.handleError)
+            )
     }
 
-    public userSignedIn(){
+    public userSignedIn() {
         // call Angular-Token userSignedIn method here!
         // returns Boolean
 

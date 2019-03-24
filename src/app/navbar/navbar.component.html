@@ -1,19 +1,37 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgb(86, 61, 124);">
   <a class="navbar-brand" routerLink="/">Task Manager</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar" aria-controls="myNavbar" aria-expanded="false" aria-label="Alterna navegação">
+      <span class="navbar-toggler-icon"></span>
   </button>
-  
-  <div *ngIf="authService.userSignedIn()" class="collapse navbar-collapse">
+
+  <div *ngIf="authService.userSignedIn()" class="collapse navbar-collapse" id="myNavbar">
     <ul class="navbar-nav mr-auto">
+
       <li class="nav-item" routerLinkActive="active">
         <a class="nav-link" routerLink="/dashboard">Dashboard</a>
       </li>
+
       <li class="nav-item" routerLinkActive="active">
         <a class="nav-link" routerLink="/tasks">Tarefas</a>
       </li>
-    </ul>
-    <task-search></task-search>
-  </div>
 
+      <li>
+        <div class="form-inline ml-2 my-2 my-lg-0">
+          <task-search></task-search>
+        </div>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav ml-auto">
+      <li>
+        <div class="form-inline">
+          <button class="btn btn-danger my-2 my-sm-0" (click)="signOutUser()">
+              <i class="fa fa-sign-out"></i> Sair
+          </button>
+        </div>
+      </li>
+    </ul> 
+  </div>
 </nav>

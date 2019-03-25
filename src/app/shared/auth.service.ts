@@ -19,12 +19,21 @@ export class AuthService{
         return this.tokenService.registerAccount(user as any)
             .pipe(
                 catchError(this.handleError)
-            )
+            );
     }
 
-    public signIn(uid: string, password: string){
+    public signIn(uid: string, password: string): Observable<Response> {
         // call Angular-Token SignUp method here!
         // returns Observable<Response>
+        let signInData = {
+            login: uid,
+            password: password
+        };
+
+        return this.tokenService.signIn(signInData)
+            .pipe(
+                catchError(this.handleError)
+            );
     }
 
     public signOut(): Observable<Response> {
@@ -33,7 +42,7 @@ export class AuthService{
         return this.tokenService.signOut()
             .pipe(
                 catchError(this.handleError)
-            )
+            );
     }
 
     public userSignedIn() {

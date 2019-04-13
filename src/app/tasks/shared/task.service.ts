@@ -7,7 +7,12 @@ import { Task } from './task.model';
 
 //  header in HTTP
 const httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    headers: new HttpHeaders(
+        { 
+            'Content-Type': 'application/json',
+            'Accept': 'application/vnd.taskmanager.v2'
+        }
+    )
 };
 
 @Injectable()
@@ -22,7 +27,7 @@ export class TaskService{
         return this.http.get<Task[]>(this.tasksUrl)
             .pipe(
                 catchError(this.handleError)
-            )
+            );
     }
 
     // Retorna algumas tarefas
@@ -30,7 +35,7 @@ export class TaskService{
         return this.getAll().pipe(
             catchError(this.handleError),
             map(tasks =>  tasks.slice(0, 4))
-            )  
+            );
     }
 
     // Retorna o endereço de uma tarefa específica
@@ -39,17 +44,16 @@ export class TaskService{
 
         return this.http.get<Task>(url).pipe(
             catchError(this.handleError)
-        )
+        );
     }
-    // Tutorial de apoio sobre HTTPCLIENT: https://angular.io/tutorial/toh-pt6
 
+    // Tutorial de apoio sobre HTTPCLIENT: https://angular.io/tutorial/toh-pt6
     public create(task: Task): Observable<Task>{
         return this.http.post<Task>(this.tasksUrl, task, httpOptions)
             .pipe(
                 catchError(this.handleError)
-            )
+            );
     }
-
 
     public update(task: Task): Observable<Task>{
     
@@ -57,7 +61,7 @@ export class TaskService{
             .pipe(
                 catchError(this.handleError),
                 map(() => task)
-            )
+            );
     }
 
     public delete(id: number): Observable<null>{
@@ -67,7 +71,7 @@ export class TaskService{
             .pipe(
                 catchError(this.handleError),
                 map(() => null)
-            )
+            );
     }
 
     public searchByTitle(term: string): Observable<Task[]>{
@@ -76,16 +80,11 @@ export class TaskService{
         return this.http.get<Task[]>(url)
             .pipe(
                 catchError(this.handleError)
-            )
+            );
     }
 
-    /**
-         * Handle Http operation that failed.
-         * Let the app continue.    
-    **/
     private handleError(error) {
         console.log("SALVANDO O ERRO EM UM ARQUIVO DE LOG - DETALHES DO ERRO =>", error);
         return throwError(error);
     }
-
 }

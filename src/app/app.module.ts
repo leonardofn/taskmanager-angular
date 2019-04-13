@@ -51,7 +51,7 @@ import * as datetimepicker from 'eonasdan-bootstrap-datetimepicker';
     AppRoutingModule,
     HttpClientModule,
     AngularTokenModule.forRoot({
-      apiBase: 'http://api.task-manager.test:3000', // endereço da api feita em Rails
+      apiBase: 'http://api.task-manager.test:3000'
     })
   ],
   providers: [ 

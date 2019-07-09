@@ -9,7 +9,7 @@ import { AuthService } from '../shared/auth.service';
 })
 
 export class NavbarComponent {
-    
+
     public constructor(private authService: AuthService, private router: Router){ }
 
     public signOutUser() {
@@ -17,5 +17,9 @@ export class NavbarComponent {
             .subscribe(
                 () => this.router.navigate(['/sign-in'])
             )
+    }
+
+    public userSignedIn() {
+      return this.authService.userSignedIn();
     }
 }

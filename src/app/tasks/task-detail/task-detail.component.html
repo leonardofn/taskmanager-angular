@@ -1,5 +1,5 @@
 <!-- Atualizando o template de tarefas -->
-<h1 class="pb-2 mt-4 mb-4 border-bottom">Detalhes da Tarefa: {{ task?.attributes?.title }}</h1>
+<h1 class="pb-2 mt-4 mb-4 border-bottom">Detalhes da Tarefa: {{ task['attributes'].title }}</h1>
 <!--
 pb-2 - padding bottom 2 spacer units
 mt-4 - margin top 4 spacer units
@@ -14,7 +14,7 @@ border-bottom - border-bottom: 1px solid rgb(222, 226, 230)
         <div class="form-group col-md-6">
             <label for="title" class="col-form-label" [class.text-danger]="formUtils.showFieldError('title')"><strong>Título</strong></label>
             <input type="text" formControlName="title" class="form-control" [ngClass]="formUtils.fieldClassForErrorOrSuccess('title')" id="title" autocomplete="off">
-        
+
             <div *ngIf="formUtils.showFieldError('title')" class="invalid-feedback">
                 <div *ngIf="form.get('title').errors.required">Por favor, entre com um título para a tarefa.</div>
                 <div *ngIf="form.get('title').errors.minlength">O título deve ter no mínimo 2 caracteres.</div>
@@ -33,7 +33,7 @@ border-bottom - border-bottom: 1px solid rgb(222, 226, 230)
         <div class="form-group col-md-3">
             <label for="done" class="col-form-label" [class.text-danger]="formUtils.showFieldError('done')"><strong>Situação</strong></label>
             <select formControlName="done" class="form-control" [ngClass]="formUtils.fieldClassForErrorOrSuccess('done')" id="done">
-                <option *ngFor="let option of taskDoneOptions" [value]="option.value">{{ option.text }}</option>            
+                <option *ngFor="let option of taskDoneOptions" [value]="option.value">{{ option.text }}</option>
             </select>
             <div *ngIf="formUtils.showFieldError('done')" class="invalid-feedback">Por favor, informe a situação da tarefa.</div>
         </div>
@@ -85,7 +85,7 @@ border-bottom - border-bottom: 1px solid rgb(222, 226, 230)
         <div class="form-group col-md-3">
             <label for="done" class="col-form-label" [class.text-danger]="showFieldError(done)"><strong>Situação</strong></label>
             <select #done="ngModel" [(ngModel)]="task.done" class="custom-select" [class.border-danger]="showFieldError(done)" name="done" id="done" required>
-                <option *ngFor="let option of taskDoneOptions" [value]="option.value">{{ option.text }}</option>            
+                <option *ngFor="let option of taskDoneOptions" [value]="option.value">{{ option.text }}</option>
             </select>
             <div *ngIf="showFieldError(done)" [class.text-danger]="showFieldError(done)" class="mt-1">
                 <div *ngIf="done.errors.required" style="font-size: 13px;">Por favor, informe a situação da tarefa.</div>
@@ -107,8 +107,8 @@ border-bottom - border-bottom: 1px solid rgb(222, 226, 230)
         <div class="btn-group mr-2" role="group">
             <button class="btn btn-secondary">Voltar</button>
         </div>
-    </div> 
-    
+    </div>
+
     <hr>
     <pre>{{ task | json }}</pre>
 </form>-->

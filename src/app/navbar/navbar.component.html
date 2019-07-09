@@ -6,7 +6,7 @@
       <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div *ngIf="authService.userSignedIn()" class="collapse navbar-collapse" id="myNavbar">
+  <div *ngIf="userSignedIn()" class="collapse navbar-collapse" id="myNavbar">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item my-auto" routerLinkActive="active">
         <a class="nav-link navbar-text" routerLink="/dashboard">Dashboard</a>

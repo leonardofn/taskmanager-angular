@@ -1,5 +1,5 @@
 <!--https://getbootstrap.com.br/docs/4.1/utilities/spacing/-->
-<nav class="mb-1 navbar navbar-expand-md navbar-dark" style="padding:15px; background-color: #3B2F63; background-image: -webkit-radial-gradient(50% top, circle, rgba(84,90,182,0.6) 0%, rgba(84,90,182,0) 75%),-webkit-radial-gradient(right top, circle, #794aa2 0%, rgba(121,74,162,0) 57%);">
+<nav class="mb-1 navbar navbar-expand-md navbar-dark" style="padding:9px; background-color: #3B2F63; background-image: -webkit-radial-gradient(50% top, circle, rgba(84,90,182,0.6) 0%, rgba(84,90,182,0) 75%),-webkit-radial-gradient(right top, circle, #794aa2 0%, rgba(121,74,162,0) 57%);">
   <a class="navbar-brand" routerLink="/">Task Manager</a>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar" aria-controls="myNavbar" aria-expanded="false" aria-label="Alterna navegação">
@@ -8,16 +8,16 @@
 
   <div *ngIf="authService.userSignedIn()" class="collapse navbar-collapse" id="myNavbar">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item" routerLinkActive="active">
+      <li class="nav-item my-auto" routerLinkActive="active">
         <a class="nav-link navbar-text" routerLink="/dashboard">Dashboard</a>
       </li>
 
-      <li class="nav-item" routerLinkActive="active">
+      <li class="nav-item my-auto mr-1" routerLinkActive="active">
         <a class="nav-link navbar-text" routerLink="/tasks">Tarefas</a>
       </li>
 
       <li>
-        <div class="form-inline my-1 mb-2">
+        <div class="form-inline my-auto">
           <!-- Barra de busca -->
           <task-search></task-search>
         </div>
@@ -25,13 +25,13 @@
     </ul>
 
     <ul class="navbar-nav ml-auto">
-      <li>
+      <li class="my-auto">
         <div class="form-inline">
           <button class="btn btn-danger my-2 my-sm-0" (click)="signOutUser()">
               <i class="fa fa-sign-out"></i> Sair
           </button>
         </div>
       </li>
-    </ul> 
+    </ul>
   </div>
 </nav>

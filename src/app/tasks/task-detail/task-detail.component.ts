@@ -14,7 +14,7 @@ import { TaskService } from '../shared/task.service';
     // styles: [".form-control-feedback{ margin-right:20px }"] Adicionar css específico a uma class
 })
 
-export class TaskDetailComponent implements OnInit, AfterViewInit{
+export class TaskDetailComponent implements OnInit{
     public form: FormGroup;
     public task: Task;
     public taskDoneOptions: Array<any>;
@@ -25,7 +25,7 @@ export class TaskDetailComponent implements OnInit, AfterViewInit{
         private route: ActivatedRoute,
         private location: Location,
         private formBuilder: FormBuilder
-    ){ 
+    ){
         this.taskDoneOptions = [
             { value: false, text: 'Pendente' },
             { value: true, text: 'Feita' }
@@ -64,13 +64,6 @@ export class TaskDetailComponent implements OnInit, AfterViewInit{
             'done': task.attributes.done,
             'deadline': task.attributes.deadline,
         });
-    }
-
-    public ngAfterViewInit(){
-        // $("#deadline").datetimepicker({
-        //     'sideByside': true,
-        //     'locale': 'pt-br'
-        // }).on('dp.change', () => this.reactiveTaskForm.get('deadline').setValue($("#deadline").val()));
     }
 
     public goBack(){

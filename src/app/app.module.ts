@@ -55,10 +55,10 @@ import { OWL_DATE_TIME_LOCALE } from 'ng-pick-datetime';
     AngularTokenModule.forRoot({
       apiBase: 'https://taskmanager-api-leonardo.herokuapp.com'
     }),
-    OwlDateTimeModule, 
+    OwlDateTimeModule,
     OwlNativeDateTimeModule
   ],
-  providers: [ 
+  providers: [
     AuthGuard,
     AngularTokenModule,
     AuthService,

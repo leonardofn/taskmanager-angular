@@ -1,5 +1,5 @@
 <!-- Atualizando o template de tarefas -->
-<h1 class="pb-2 mt-4 mb-4 border-bottom">Detalhes da Tarefa: {{ task.title }}</h1>
+<h1 class="pb-2 mt-4 mb-4 border-bottom">Detalhes da Tarefa: {{ task?.attributes?.title }}</h1>
 <!--
 pb-2 - padding bottom 2 spacer units
 mt-4 - margin top 4 spacer units
@@ -25,7 +25,8 @@ border-bottom - border-bottom: 1px solid rgb(222, 226, 230)
         <!-- taskDeadline -->
         <div class="form-group col-md-3">
             <label for="deadline" class="col-form-label" [class.text-danger]="formUtils.showFieldError('deadline')"><strong>Prazo de entrega</strong></label>
-            <input type="text" formControlName="deadline" class="form-control" [ngClass]="formUtils.fieldClassForErrorOrSuccess('deadline')" id="deadline" autocomplete="off">
+            <input type="text" formControlName="deadline" class="form-control" [ngClass]="formUtils.fieldClassForErrorOrSuccess('deadline')" id="deadline" autocomplete="off" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1">
+            <owl-date-time #dt1></owl-date-time>
             <div *ngIf="formUtils.showFieldError('deadline')" class="invalid-feedback">Por favor, entre com o prazo.</div>
         </div>
         <!-- taskDone -->
@@ -55,9 +56,7 @@ border-bottom - border-bottom: 1px solid rgb(222, 226, 230)
         </div>
     </div>
 <hr>
-<pre>
-    {{ form.value | json }}
-</pre>
+<pre>{{ form.value | json }}</pre>
 <hr>
 
 </form>

@@ -10,13 +10,7 @@ import { AngularTokenService } from 'angular-token';
 
 export class AppComponent {
   title = "Gerenciador de Tarefas";
-
-  // public constructor(private tokenService: Angular2TokenService){
-  //   this.tokenService.init({
-  //     apiBase: 'http://api.taskmanager.test:3000'
-  //   })
-  // }
-
+  
   public constructor(private tokenService: AngularTokenService){ }
 
 }

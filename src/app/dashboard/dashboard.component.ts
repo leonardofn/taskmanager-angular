@@ -11,17 +11,13 @@ import { TaskService } from '../tasks/shared/task.service';
 export class DashboardComponent implements OnInit{
     public tasks: Task[];
 
-    public constructor(private taskService: TaskService){
-        
-    }
+    public constructor(private taskService: TaskService){ }
 
     public ngOnInit(){
-        //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-        //Add 'implements OnInit' to the class.
         this.taskService.getImportant()
             .subscribe(
-                (tasks) => this.tasks = tasks,
-                error => alert("Ocorreu um erro no servidor, tente mais tarde.")
+                (tasks) => this.tasks = tasks['data'],
+                (error) => alert("Ocorreu um erro no servidor, tente mais tarde.")
             );
     }
 }

@@ -1,5 +1,6 @@
 // angular imports
 import { BrowserModule } from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
@@ -30,8 +31,8 @@ import { NotAuthenticatedGuard } from './guards/not-authenticated.guard';
 import { AppRoutingModule } from './app-routing.module';
 
 // jquery plugins
-import * as $ from 'jquery';
-import * as datetimepicker from 'eonasdan-bootstrap-datetimepicker';
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+import { OWL_DATE_TIME_LOCALE } from 'ng-pick-datetime';
 
 @NgModule({
   declarations: [
@@ -47,19 +48,23 @@ import * as datetimepicker from 'eonasdan-bootstrap-datetimepicker';
   imports: [
     BrowserModule,
     FormsModule,
+    BrowserAnimationsModule,
     ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
     AngularTokenModule.forRoot({
-      apiBase: 'http://api.task-manager.test:3000'
-    })
+      apiBase: 'https://taskmanager-api-leonardo.herokuapp.com'
+    }),
+    OwlDateTimeModule, 
+    OwlNativeDateTimeModule
   ],
   providers: [ 
     AuthGuard,
     AngularTokenModule,
     AuthService,
     NotAuthenticatedGuard,
-    TaskService
+    TaskService,
+    {provide: OWL_DATE_TIME_LOCALE, useValue: 'pt-BR'}
   ],
   bootstrap: [AppComponent]
 })

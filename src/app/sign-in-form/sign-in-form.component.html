@@ -1,12 +1,12 @@
 <h1 class="pb-2 mt-4 mb-4 border-bottom">Faça o seu login</h1>
 
-<div class="jumbotron"> 
+<div class="jumbotron">
     <div *ngIf="formErrors" class="alert alert-danger">
         <strong>
             <i class="fa fa-exclamation-triangle"></i>
                 Ocorreu um erro ao tentar entrar no sistema.
         </strong>
-    
+
         <ul>
             <!-- Exibe a mensagem de erro no alert -->
             <li *ngFor="let error of formErrors">{{ error }}</li>
@@ -18,7 +18,7 @@
             <label for="login" class="col-sm-4 col-form-label text-right" [ngClass]="formUtils.fieldClassForErrorOrSuccess('login')"><strong>Email</strong></label>
             <div class="col-sm-4">
                 <input type="email" class="form-control" formControlName="login" [ngClass]="formUtils.fieldClassForErrorOrSuccess('login')" id="login">
-            
+
                 <div *ngIf="formUtils.showFieldError('login')" class="invalid-feedback">
                     <div *ngIf="form.get('login').errors.required">O campo email é obrigatório.</div>
                     <div *ngIf="form.get('login').errors.email">O email digitado é inválido.</div>
@@ -30,10 +30,10 @@
             <label for="password" class="col-sm-4 col-form-label text-right" [ngClass]="formUtils.fieldClassForErrorOrSuccess('password')"><strong>Senha</strong></label>
             <div class="col-sm-4">
                 <input type="password" class="form-control" id="password"  formControlName="password" [ngClass]="formUtils.fieldClassForErrorOrSuccess('password')">
-            
+
                 <div *ngIf="formUtils.showFieldError('password')" class="invalid-feedback">
                     <div *ngIf="form.get('password').errors.required">O campo senha é obrigatório.</div>
-                </div>              
+                </div>
             </div>
         </div>
 
@@ -45,8 +45,8 @@
 
         <div class="form-group row">
             <div class="col-sm-4 offset-sm-4">
-                Se você não tem uma conta,
-                <a routerLink="/sign-up">clique aqui</a>
+                Ainda não tem uma conta?
+                <a routerLink="/sign-up">Clique aqui.</a>
             </div>
         </div>
     </form>

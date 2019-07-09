@@ -27,7 +27,7 @@ export class TaskSearchComponent implements OnInit{
             switchMap(
                 term => term ? this.taskService.searchByTitle(term) : of<Task[]>([])
             )
-        ).subscribe(tasks => this.tasks = tasks)
+        ).subscribe(tasks => this.tasks = tasks['data'])
     }
 
     public search(term: string){

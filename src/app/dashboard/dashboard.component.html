@@ -9,7 +9,7 @@
     </thead>
     <tbody>
         <tr *ngFor="let task of tasks">
-            <td>{{ task.title }}</td>
+            <td>{{ task.attributes.title }}</td>
             <td>
                 <a [routerLink]="['/tasks', task.id]" class="btn btn-info">Detalhes</a>
             </td>

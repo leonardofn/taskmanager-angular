@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs/operators'; // para versões do rxjs > 5.5
 import { Location } from '@angular/common';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
@@ -44,28 +44,26 @@ export class TaskDetailComponent implements OnInit, AfterViewInit{
     public ngOnInit(){
         this.task = new Task(null, null);
 
-        this.route.params.pipe(
-            switchMap((params: Params) => {
-                return this.taskService.getById(+params['id'])// "+" => converte uma string (e.g.: "1") em um objeto tipo number (1)
+        this.route.paramMap.pipe(
+            switchMap((params) => {
+                const id = +params.get('id');
+                return this.taskService.getById(id)// "+" => converte uma string (e.g.: "1") em um objeto tipo number (1)
             }))
             .subscribe(
-                task => this.setTask(task),
+                (task: any) => this.setTask(task['data']),
                 error => alert("Ocorreu um erro no servidor, tente mais tarde.")
             );
     }
 
-    public setTask(task: Task): void {
+    public setTask(task: any): void {
         this.task = task;
 
-        //setValue
-        // let formModel = {
-        //     title: task.title || null,
-        //     done: task.done || null,
-        //     deadline: task.deadline || null,
-        //     description: task.description || null,
-        // }
-
-        this.form.patchValue(task);
+        this.form.patchValue({
+            'title': task.attributes.title,
+            'description': task.attributes.description,
+            'done': task.attributes.done,
+            'deadline': task.attributes.deadline,
+        });
     }
 
     public ngAfterViewInit(){

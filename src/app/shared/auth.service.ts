@@ -53,7 +53,7 @@ export class AuthService{
     }
 
     private handleError(error) {
-        console.log("SALVANDO O ERRO EM UM ARQUIVO DE LOG - DETALHES DO ERRO =>", error);
+        console.log("ERRO DE AUTENTICAÇÃO - DETALHES DO ERRO =>", error);
         return throwError(error);
     }
 }

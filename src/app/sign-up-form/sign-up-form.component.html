@@ -16,8 +16,8 @@
     <!-- Campo de Nome -->
     <form [formGroup]="form" (ngSubmit)="signUpUser()">
         <div class="form-group row">
-            <label for="name" class="col-sm-4 col-form-label text-right" [ngClass]="formUtils.fieldClassForErrorOrSuccess('name')"><strong>Nome</strong></label>
-            <div class="col-sm-4">
+            <label for="name" class="col-md-4 col-form-label" [ngClass]="formUtils.fieldClassForErrorOrSuccess('name')"><strong>Nome</strong></label>
+            <div class="col-md-4">
                 <input type="text" formControlName="name" class="form-control" [ngClass]="formUtils.fieldClassForErrorOrSuccess('name')" id="name"  autocomplete="off">
 
                 <div *ngIf="formUtils.showFieldError('name')" class="invalid-feedback">
@@ -31,8 +31,8 @@
         <!-- Campo de Email -->
         <!-- Foi nomeado para login no formControlName devido exigência do plugin AngularToken -->
         <div class="form-group row">
-            <label for="login" class="col-sm-4 col-form-label text-right" [ngClass]="formUtils.fieldClassForErrorOrSuccess('login')"><strong>Email</strong></label>
-            <div class="col-sm-4">
+            <label for="login" class="col-md-4 col-form-label" [ngClass]="formUtils.fieldClassForErrorOrSuccess('login')"><strong>Email</strong></label>
+            <div class="col-md-4">
                 <input type="email" class="form-control" formControlName="login" [ngClass]="formUtils.fieldClassForErrorOrSuccess('login')" id="login">
 
                 <div *ngIf="formUtils.showFieldError('login')" class="invalid-feedback">
@@ -44,8 +44,8 @@
 
         <!-- Campo de Senha -->
         <div class="form-group row">
-            <label for="password" class="col-sm-4 col-form-label text-right" [ngClass]="formUtils.fieldClassForErrorOrSuccess('password')"><strong>Senha</strong></label>
-            <div class="col-sm-4">
+            <label for="password" class="col-md-4 col-form-label" [ngClass]="formUtils.fieldClassForErrorOrSuccess('password')"><strong>Senha</strong></label>
+            <div class="col-md-4">
                 <input type="password" class="form-control" id="password"  formControlName="password" [ngClass]="formUtils.fieldClassForErrorOrSuccess('password')">
 
                 <div *ngIf="formUtils.showFieldError('password')" class="invalid-feedback">
@@ -57,25 +57,25 @@
 
         <!-- Campo de Confirmação de Senha -->
         <div class="form-group row">
-            <label for="passwordConfirmation" class="col-sm-4 col-form-label text-right" [ngClass]="formUtils.fieldClassForErrorOrSuccess('passwordConfirmation')"><strong>Confirmação de Senha</strong></label>
-            <div class="col-sm-4">
+            <label for="passwordConfirmation" class="col-md-4 col-form-label" [ngClass]="formUtils.fieldClassForErrorOrSuccess('passwordConfirmation')"><strong>Confirmação de Senha</strong></label>
+            <div class="col-md-4">
                 <input type="password" class="form-control" id="passwordConfirmation"  formControlName="passwordConfirmation" [ngClass]="formUtils.fieldClassForErrorOrSuccess('passwordConfirmation')">
 
                 <div *ngIf="formUtils.showFieldError('passwordConfirmation')" class="invalid-feedback">
                     <div *ngIf="form.get('passwordConfirmation').errors.required">O confirmação de senha é obrigatório.</div>
-                    <div *ngIf="form.get('passwordConfirmation').errors.mismatch">As senhas não coincidem.</div>
+                    <div *ngIf="form.get('passwordConfirmation').errors.mimdatch">As senhas não coincidem.</div>
                 </div>
             </div>
         </div>
 
         <div class="form-group row">
-            <div class="col-sm-4 offset-sm-4">
+            <div class="col-md-4 offset-md-4">
                 <button [disabled]="form.invalid || submitted" type="submit" class="btn btn-primary">Criar Conta</button>
             </div>
         </div>
 
         <div class="form-group row">
-            <div class="col-sm-4 offset-sm-4">
+            <div class="col-md-4 offset-md-4">
                 Já possui uma conta?
                 <a routerLink="/sign-in">Clique aqui para entrar.</a>
             </div>

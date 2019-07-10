@@ -7,7 +7,8 @@ import { FormUtils } from '../shared/form.utils';
 
 @Component({
     selector: 'sign-in',
-    templateUrl: './sign-in-form.component.html'
+    templateUrl: './sign-in-form.component.html',
+    styleUrls: ['./sign-in-form.component.css']
 })
 
 export class SignInFormComponent{

@@ -1,0 +1,11 @@
+@media(max-width: 510px){
+  .action-btn{
+    margin: .25rem 0 .25rem 0 !important;
+  }
+}
+
+@media(min-width: 510px){
+  .mb2{
+    margin-right: .3rem !important;
+  }
+}

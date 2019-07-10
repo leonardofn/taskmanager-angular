@@ -1,46 +1,48 @@
 <!-- Tabela de tarefas -->
-<div align="center">
-  <h1 class="mt-4 mb-3">Lista de Tarefas</h1>
-</div>
+<div class="conteiner">
+  <div align="center">
+    <h1 class="mt-4 mb-3">Lista de Tarefas</h1>
+  </div>
 
-<div class="card card-body bg-light mb-2">
-   <form (ngSubmit)="createTask()">
-      <div class="row">
-         <div class="col-md-10">
-            <input type="text" class="form-control" [(ngModel)]="newTask.title" name="title"
-               placeholder="Digite aqui uma nova tarefa">
-         </div>
-         <div class="col-md-2">
-            <button class="btn btn-success" type="submit">Adicionar</button>
-         </div>
-      </div>
-   </form>
-</div>
+  <div class="card card-body bg-light mb-2">
+     <form (ngSubmit)="createTask()">
+        <div class="row justify-content-center">
+           <div class="col-12 col-md-8 my-1">
+              <input type="text" class="form-control" [(ngModel)]="newTask.title" name="title" placeholder="Digite aqui uma nova tarefa">
+           </div>
 
-<table class="table">
-   <thead>
-      <tr>
-         <th>ID</th>
-         <th>Título</th>
-         <th>Ações</th>
-      </tr>
-   </thead>
-   <tbody>
-      <tr *ngFor="let task of tasks">
-         <td>{{ task.id }}</td>
-         <td>{{ task.attributes.title }}</td>
-         <td>
-            <div class="btn-group mr-2">
-               <a class="btn btn-info" [routerLink]="[ '/tasks', task.id ]">
-                  <i class="fa fa-info-circle"></i> Detalhes
-               </a>
+           <div class="col-6 col-md-2 text-center my-1">
+              <button class="btn btn-success" type="submit">Adicionar</button>
             </div>
-            <div class="btn-group">
-               <button type="button" class="btn btn-danger" (click)="deleteTask(task)">
-                  <i class="fa fa-trash-o"></i> Excluir
-               </button>
-            </div>
-         </td>
-      </tr>
-   </tbody>
-</table>
+        </div>
+     </form>
+  </div>
+
+  <table class="table">
+     <thead>
+        <tr>
+           <th>ID</th>
+           <th>Título</th>
+           <th class="text-center">Ações</th>
+        </tr>
+     </thead>
+     <tbody>
+        <tr *ngFor="let task of tasks">
+           <td>{{ task.id }}</td>
+           <td>{{ task.attributes.title }}</td>
+           <td class="text-center">
+              <div class="btn-group mr-2">
+                 <a class="btn btn-info" [routerLink]="[ '/tasks', task.id ]">
+                    <i class="fa fa-info-circle"></i> Detalhes
+                 </a>
+              </div>
+              <div class="btn-group">
+                 <button type="button" class="btn btn-danger" (click)="deleteTask(task)">
+                    <i class="fa fa-trash-o"></i> Excluir
+                 </button>
+              </div>
+           </td>
+        </tr>
+     </tbody>
+  </table>
+</div>

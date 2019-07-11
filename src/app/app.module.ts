@@ -22,6 +22,7 @@ import { TaskDetailComponent } from './tasks/task-detail/task-detail.component';
 // service imports
 import { TaskService } from './tasks/shared/task.service';
 import { AuthService } from './shared/auth.service';
+import { AlertifyService } from './shared/alertify.service';
 
 // guards imports
 import { AuthGuard } from './guards/auth.guard';
@@ -31,6 +32,9 @@ import { NotAuthenticatedGuard } from './guards/not-authenticated.guard';
 import { AppRoutingModule } from './app-routing.module';
 
 // jquery plugins
+//import $ from "jquery";
+
+// JS plugins
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { OWL_DATE_TIME_LOCALE } from 'ng-pick-datetime';
 
@@ -64,7 +68,8 @@ import { OWL_DATE_TIME_LOCALE } from 'ng-pick-datetime';
     AuthService,
     NotAuthenticatedGuard,
     TaskService,
-    {provide: OWL_DATE_TIME_LOCALE, useValue: 'pt-BR'}
+    {provide: OWL_DATE_TIME_LOCALE, useValue: 'pt-BR'},
+    AlertifyService
   ],
   bootstrap: [AppComponent]
 })

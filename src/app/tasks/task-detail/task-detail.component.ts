@@ -7,6 +7,7 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 import { FormUtils } from '../../shared/form.utils';
 import { Task } from '../shared/task.model';
 import { TaskService } from '../shared/task.service';
+import { AlertifyService } from '../../shared/alertify.service';
 
 @Component({
     selector: 'task-detail',
@@ -24,7 +25,8 @@ export class TaskDetailComponent implements OnInit{
         private taskService: TaskService,
         private route: ActivatedRoute,
         private location: Location,
-        private formBuilder: FormBuilder
+        private formBuilder: FormBuilder,
+        private alertify: AlertifyService
     ){
         this.taskDoneOptions = [
             { value: false, text: 'Pendente' },
@@ -51,7 +53,7 @@ export class TaskDetailComponent implements OnInit{
             }))
             .subscribe(
                 (task: any) => this.setTask(task['data']),
-                error => alert("Ocorreu um erro no servidor, tente mais tarde.")
+                error => this.alertify.msgAlert("Erro","Ocorreu um erro no servidor, tente mais tarde.")
             );
     }
 
@@ -78,8 +80,8 @@ export class TaskDetailComponent implements OnInit{
 
         this.taskService.update(this.task)
             .subscribe(
-                () => alert("Tarefa atualizada com sucesso!"),
-                () => alert("Ocorreu um erro no servidor, tente mais tarde.")
+                () => this.alertify.msgAlert("Sucesso","Tarefa atualizada com sucesso!"),//alert("Tarefa atualizada com sucesso!"),
+                () => this.alertify.msgAlert("Erro","Ocorreu um erro no servidor, tente mais tarde.")
             );
     }
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Task } from './shared/task.model';
 import { TaskService } from './shared/task.service';
+import { AlertifyService } from '../shared/alertify.service';
 
 @Component({
     selector: 'tasks',
@@ -13,7 +14,7 @@ export class TasksComponent implements OnInit {
     public tasks: Task[];
     public newTask: Task;
 
-    public constructor(private taskService: TaskService) {
+    public constructor(private taskService: TaskService, private alertify: AlertifyService) {
         this.newTask = new Task(null, '');
     }
 
@@ -22,7 +23,7 @@ export class TasksComponent implements OnInit {
             .subscribe((tasks) => {
                 this.tasks = tasks['data'].sort((a, b) => b.id - a.id);
             },
-            error => alert("Ocorreu um erro no servidor, tente mais tarde.")
+            error => this.alertify.msgAlert("Erro","Ocorreu um erro no servidor, tente mais tarde.")//alert("Ocorreu um erro no servidor, tente mais tarde.")
             )
     }
 
@@ -30,7 +31,7 @@ export class TasksComponent implements OnInit {
         this.newTask.title = this.newTask.title.trim();
 
         if (!this.newTask.title) {
-            alert("A tarefa deve ter um título.");
+            this.alertify.msgAlert("Erro","A terefa deve ter um título. Por favor, insira um título!");//alert("A tarefa deve ter um título.");
         } else {
             this.taskService.create(this.newTask)
                 .subscribe(
@@ -38,7 +39,7 @@ export class TasksComponent implements OnInit {
                         this.tasks.unshift(task['data']);
                         this.newTask = new Task(null, '');
                     },
-                    () => alert("Ocorreu um erro no servidor, tente mais tarde.")
+                    () => this.alertify.msgAlert("Erro","Ocorreu um erro no servidor, tente mais tarde.")
                 )
         }
     }
@@ -48,7 +49,7 @@ export class TasksComponent implements OnInit {
             this.taskService.delete(task.id)
                 .subscribe(
                     () => this.tasks = this.tasks.filter(t => t !== task),
-                    () => alert("Ocorreu um erro no servidor, tente mais tarde.")
+                    () => this.alertify.msgAlert("Erro","Ocorreu um erro no servidor, tente mais tarde.")
                 )
         }
     }

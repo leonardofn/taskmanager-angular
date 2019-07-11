@@ -3,3 +3,9 @@
     text-align: right!important;
   }
 }
+
+@media(max-width: 768px){
+  .btn-cen{
+    text-align: center!important;
+  }
+}

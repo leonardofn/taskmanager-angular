@@ -1,13 +1,13 @@
 // angular imports
 import { BrowserModule } from '@angular/platform-browser';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 
 
 // angular plugins imports
-import { AngularTokenService, AngularTokenModule, AngularTokenOptions } from 'angular-token';
+import { AngularTokenModule } from 'angular-token';
 
 // components imports
 import { AppComponent } from './app.component';
@@ -68,9 +68,9 @@ import { OWL_DATE_TIME_LOCALE } from 'ng-pick-datetime';
     AuthService,
     NotAuthenticatedGuard,
     TaskService,
-    {provide: OWL_DATE_TIME_LOCALE, useValue: 'pt-BR'},
+    { provide: OWL_DATE_TIME_LOCALE, useValue: 'pt-BR' },
     AlertifyService
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule{ }
+export class AppModule { }

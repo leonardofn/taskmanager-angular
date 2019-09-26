@@ -11,7 +11,8 @@ import { AlertifyService } from '../../shared/alertify.service';
 
 @Component({
     selector: 'task-detail',
-    templateUrl: './task-detail.component.html'
+    templateUrl: './task-detail.component.html',
+    styleUrls: ['./task-detail.component.css']
     // styles: [".form-control-feedback{ margin-right:20px }"] Adicionar css específico a uma class
 })
 

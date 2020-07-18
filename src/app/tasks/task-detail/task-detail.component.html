@@ -1,5 +1,7 @@
 <!-- Atualizando o template de tarefas -->
-<h3 class="pb-2 mt-4 mb-4 border-bottom">Detalhes da Tarefa: {{ task['attributes'].title }}</h3>
+<div class="center">
+    <h3 class="pb-2 mt-4 mb-4 border-bottom">Detalhes da Tarefa: {{ task['attributes'].title }}</h3>
+</div>
 
 <form [formGroup]="form" (ngSubmit)="updateTask()">
     <div class="row">

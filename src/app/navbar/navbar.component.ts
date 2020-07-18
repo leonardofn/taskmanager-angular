@@ -3,14 +3,14 @@ import { Router } from '@angular/router';
 
 import { AuthService } from '../shared/auth.service';
 
-@Component ({
+@Component({
     selector: 'navbar',
     templateUrl: './navbar.component.html'
 })
 
 export class NavbarComponent {
 
-    public constructor(private authService: AuthService, private router: Router){ }
+    public constructor(private authService: AuthService, private router: Router) { }
 
     public signOutUser() {
         this.authService.signOut()
@@ -20,6 +20,6 @@ export class NavbarComponent {
     }
 
     public userSignedIn() {
-      return this.authService.userSignedIn();
+        return this.authService.userSignedIn();
     }
 }
